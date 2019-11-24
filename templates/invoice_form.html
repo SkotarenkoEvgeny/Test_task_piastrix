@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form name="Pay" method={{ form_data.method }} action="{{ form_data.url }}"
+      accept-charset="UTF-8">
+    <input name="lang" value={{ form_data.value }}>
+    <input name="m_curorderid" value={{ form_data.m_curorderid }}/>
+    <input name="m_historyid" value={{ form_data.m_historyid }}/>
+    <input name="m_historytm" value={{ form_data.m_historytm }}>
+    <input name="referer" value={{ form_data.referer }}/>
+    <input type="submit"/>
+</form>
+</body>
+</html>
