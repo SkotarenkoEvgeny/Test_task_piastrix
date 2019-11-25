@@ -161,6 +161,6 @@ def currency_choice():
                 return "<h1>Error: {}</h1>".format(raw_json_response['message'])
 
 
-# if __name__ == '__main__':
-#     # app.run()
-#     app.run(debug=True)
+if __name__ == '__main__':
+    # app.run()
+    app.run(debug=True)
