@@ -7,12 +7,12 @@
 <body>
 <form name="Pay" method={{ form_data.method }} action="{{ form_data.url }}"
       accept-charset="UTF-8">
-    <input name="lang" value={{ form_data.value }}>
-    <input name="m_curorderid" value={{ form_data.m_curorderid }}/>
-    <input name="m_historyid" value={{ form_data.m_historyid }}/>
-    <input name="m_historytm" value={{ form_data.m_historytm }}>
-    <input name="referer" value={{ form_data.referer }}/>
-    <input type="submit" value="Send me" OnChange='user_mode.submit()'>
+    <input name="lang" type="hidden" value={{ form_data.value }}>
+    <input name="m_curorderid" type="hidden" value={{ form_data.m_curorderid }}/>
+    <input name="m_historyid" type="hidden" value={{ form_data.m_historyid }}/>
+    <input name="m_historytm" type="hidden" value={{ form_data.m_historytm }}>
+    <input name="referer" type="hidden" value={{ form_data.referer }}/>
+    <script type="text/javascript">document.Pay.submit();</script>
 </form>
 </body>
 </html>
