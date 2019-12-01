@@ -21,5 +21,6 @@ class Log_table(Base):
 
 #creates a create_engine instance at the bottom of the file
 engine = create_engine('sqlite:///database.db')
+print('created')
 
 Base.metadata.create_all(engine)
