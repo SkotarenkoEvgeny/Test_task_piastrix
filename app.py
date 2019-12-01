@@ -13,7 +13,8 @@ from database_setup import Base, Log_table
 app = Flask(__name__)
 
 # Connect to Database and create database session
-engine = create_engine('sqlite:///database.db')
+engine = create_engine('sqlite:///database.db',
+                        connect_args={'check_same_thread': False})
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -160,6 +161,10 @@ def currency_choice():
             else:
                 return "<h1>Error: {}</h1>".format(raw_json_response['message'])
 
+@app.route('/database_table')
+def database_table():
+    data_log = session.query(Log_table).all()
+    return render_template('database_table.html', data_log=data_log)
 
 if __name__ == '__main__':
     # app.run()

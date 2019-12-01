@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <table class="table table-striped">
+        <thead>
+        {% set sort_on = request.args.sort_on|default('id') %}
+        {% set reverse_on = request.args.reverse_on|default(False) %}
+        <tr>
+            <th>
+                <a href="/database_table?sort_on=id{%  if reverse_on==False %}&amp;reverse_on=True{% endif %}">id
+            </th>
+            <th>
+                <a href="/database_table?sort_on=amount{%  if reverse_on==False %}&amp;reverse_on=True{% endif %}">amount
+            </th>
+            <th>
+                <a href="/database_table?sort_on=currency{%  if reverse_on==False %}&amp;reverse_on=True{% endif %}">currency
+            </th>
+            <th>
+                <a href="/database_table?sort_on=send_time{%  if reverse_on==False %}&amp;reverse_on=True{% endif %}">send_time
+            </th>
+            <th>
+                <a href="/database_table?sort_on=payment_id{%  if reverse_on==False %}&amp;reverse_on=True{% endif %}">payment_id
+            </th>
+            <th>description</th>
+        </tr>
+        </thead>
+        <tbody>
+        {%  if request.args.reverse_on=="True" %}
+            {% set reverse_on = True %}
+        {% endif %}
+        {% for data_row in data_log|sort(attribute=sort_on, reverse=reverse_on) %}
+            <tr>
+                <th scope="row">{{ data_row.id }}</th>
+                <td>{{ data_row.amount }}</td>
+                <td>{{ data_row.currency }}</td>
+                <td>{{ data_row.send_time }}</td>
+                <td>{{ data_row.payment_id }}</td>
+                <td>{{ data_row.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="btn-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <a href="/" class="btn btn-default" role="button">To Payment
+                choosing</a>
+        </div>
+
+    </div>
+
+{% endblock %}
